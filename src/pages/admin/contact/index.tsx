@@ -24,8 +24,7 @@ const Contact = () => {
       console.log(res);
       setContacts(res);
     });
-  }),
-    [];
+  }, []);
 
   return (
     <TableContainer component={Paper}>
