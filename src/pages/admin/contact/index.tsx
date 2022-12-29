@@ -18,9 +18,14 @@ import { getContacts } from '~/firestore/getContacts';
 
 const Contact = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
-  getContacts().then((res) => {
-    setContacts(res);
-  });
+
+  useEffect(() => {
+    getContacts().then((res) => {
+      console.log(res);
+      setContacts(res);
+    });
+  }),
+    [];
 
   return (
     <TableContainer component={Paper}>
