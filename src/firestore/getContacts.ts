@@ -8,7 +8,7 @@ export const getContacts = async (): Promise<Contact[]> => {
       return querySnapshot.docs.map((doc) => {
         return {
           id: doc.id,
-          firstName: doc.data().name,
+          firstName: doc.data().firstName,
           lastName: doc.data().lastName,
           companyName: doc.data().companyName,
         };
