@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Box,
   Drawer,
@@ -17,7 +17,10 @@ import TableContext from '@mui/material/Table/TableContext';
 import { getContacts } from '~/firestore/getContacts';
 
 const Contact = () => {
-  getContacts();
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  getContacts().then((res) => {
+    setContacts(res);
+  });
 
   return (
     <TableContainer component={Paper}>
@@ -30,10 +33,13 @@ const Contact = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow>
-            <TableCell>yamada</TableCell>
-            <TableCell>taro</TableCell>
-          </TableRow>
+          {contacts.map((contact) => (
+            <TableRow key={contact.id}>
+              <TableCell>{contact.lastName}</TableCell>
+              <TableCell>{contact.firstName}</TableCell>
+              <TableCell>{contact.companyName}</TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

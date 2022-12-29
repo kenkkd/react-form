@@ -2,17 +2,19 @@ import { getDocs, collection } from 'firebase/firestore';
 import { db } from '~/firebase';
 import { Collection } from '~/constants/firestore';
 
-export const getContacts = async () => {
+export const getContacts = async (): Promise<Contact[]> => {
   const res = await getDocs(collection(db, Collection.contacts)).then(
     (querySnapshot) => {
-      console.log(querySnapshot.size);
-      console.log(querySnapshot.empty);
-      querySnapshot.forEach((doc) => {
-        console.log(doc.id);
-        console.log(doc.data());
-        console.log(doc.exists());
+      return querySnapshot.docs.map((doc) => {
+        return {
+          id: doc.id,
+          firstName: doc.data().name,
+          lastName: doc.data().lastName,
+          companyName: doc.data().companyName,
+        };
       });
     }
   );
-  console.log(res);
+
+  return res;
 };
