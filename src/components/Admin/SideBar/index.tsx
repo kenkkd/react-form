@@ -13,23 +13,28 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import MailIcon from '@mui/icons-material/Mail';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Link } from 'react-router-dom';
 
 type SideBarItem = {
   name: string;
+  link: string;
   icon: ReactNode;
 };
 
 const sideBarItems: SideBarItem[] = [
   {
     name: 'フロント',
+    link: '',
     icon: <HomeIcon />,
   },
   {
     name: 'ダッシュボード',
+    link: '',
     icon: <DashboardIcon />,
   },
   {
     name: '問い合わせ',
+    link: '/admin/contact',
     icon: <MailIcon />,
   },
 ];
@@ -114,32 +119,34 @@ const SideBar = ({
           </ListItemButton>
         </ListItem>
         {sideBarItems.map((item) => (
-          <ListItem key={item.name}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: 'center',
-                px: 2,
-              }}
-            >
-              <ListItemIcon
+          <Link key={item.name} to={item.link} style={{ color: '#000000DE' }}>
+            <ListItem>
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: 'auto',
+                  minHeight: 48,
                   justifyContent: 'center',
+                  px: 2,
                 }}
               >
-                {item.icon}
-              </ListItemIcon>
-              <ListItemText
-                primary={item.name}
-                sx={{
-                  marginLeft: isSideBarOpen ? 1.5 : 0,
-                  opacity: isSideBarOpen ? 1 : 0,
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.name}
+                  sx={{
+                    marginLeft: isSideBarOpen ? 1.5 : 0,
+                    opacity: isSideBarOpen ? 1 : 0,
+                  }}
+                />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Drawer>
