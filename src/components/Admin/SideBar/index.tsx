@@ -24,7 +24,7 @@ type SideBarItem = {
 const sideBarItems: SideBarItem[] = [
   {
     name: 'フロント',
-    link: '',
+    link: '/',
     icon: <HomeIcon />,
   },
   {
