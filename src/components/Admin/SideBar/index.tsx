@@ -110,7 +110,7 @@ const SideBar = ({
               px: 2,
             }}
           >
-            {isSideBarOpen ? <ArrowForwardIosIcon /> : <ArrowBackIosNewIcon />}
+            {isSideBarOpen ? <ArrowBackIosNewIcon /> : <ArrowForwardIosIcon />}
           </ListItemButton>
         </ListItem>
         {sideBarItems.map((item) => (
