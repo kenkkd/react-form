@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { ReactNode, useState } from 'react';
 import Header from '../Header';
 import SideBar from '../SideBar';
@@ -11,15 +12,17 @@ const Layout = ({ children }: Props) => {
   const [sideBarWidth, setSideBarWidth] = useState<number>(0);
 
   return (
-    <>
+    <Box sx={{ display: 'flex' }}>
       <Header sideBarWidth={sideBarWidth} isSideBarOpen={isSideBarOpen} />
       <SideBar
         isSideBarOpen={isSideBarOpen}
         setIsSideBarOpen={setIsSideBarOpen}
         setSideBarWidth={setSideBarWidth}
       />
-      {children}
-    </>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        {children}
+      </Box>
+    </Box>
   );
 };
 
