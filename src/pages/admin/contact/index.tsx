@@ -53,7 +53,7 @@ const Contact = () => {
 
   return (
     <Layout>
-      <Stack spacing={2}>
+      <Stack mt={2} spacing={2}>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
