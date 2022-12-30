@@ -11,6 +11,8 @@ import {
 import Layout from '~/components/Admin/Layout';
 import { getContacts } from '~/firestore/getContacts';
 
+const tableHeadCells = ['姓', '名', '会社名'];
+
 const Contact = () => {
   const [contacts, setContacts] = useState<Contact[]>([]);
 
@@ -27,9 +29,9 @@ const Contact = () => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>姓</TableCell>
-              <TableCell>名</TableCell>
-              <TableCell>会社名</TableCell>
+              {tableHeadCells.map((tableHeadCell) => (
+                <TableCell>{tableHeadCell}</TableCell>
+              ))}
             </TableRow>
           </TableHead>
           <TableBody>
