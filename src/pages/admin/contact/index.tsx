@@ -1,10 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  Box,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
   Paper,
   Table,
   TableBody,
@@ -13,7 +8,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import TableContext from '@mui/material/Table/TableContext';
+import Layout from '~/components/Admin/Layout';
 import { getContacts } from '~/firestore/getContacts';
 
 const Contact = () => {
@@ -27,33 +22,28 @@ const Contact = () => {
   }, []);
 
   return (
-    <TableContainer component={Paper}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>姓</TableCell>
-            <TableCell>名</TableCell>
-            <TableCell>会社名</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {contacts.map((contact) => (
-            <TableRow key={contact.id}>
-              <TableCell>{contact.lastName}</TableCell>
-              <TableCell>{contact.firstName}</TableCell>
-              <TableCell>{contact.companyName}</TableCell>
+    <Layout>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>姓</TableCell>
+              <TableCell>名</TableCell>
+              <TableCell>会社名</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    // <Drawer variant="permanent" open={true}>
-    //   <List>
-    //     <ListItem>
-    //       <ListItemButton>aaa</ListItemButton>
-    //     </ListItem>
-    //   </List>
-    // </Drawer>
+          </TableHead>
+          <TableBody>
+            {contacts.map((contact) => (
+              <TableRow key={contact.id}>
+                <TableCell>{contact.lastName}</TableCell>
+                <TableCell>{contact.firstName}</TableCell>
+                <TableCell>{contact.companyName}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Layout>
   );
 };
 
