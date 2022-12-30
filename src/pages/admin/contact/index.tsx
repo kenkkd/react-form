@@ -10,17 +10,30 @@ import {
 } from '@mui/material';
 import Layout from '~/components/Admin/Layout';
 import { getContacts } from '~/firestore/getContacts';
+import { v4 as uuidv4 } from 'uuid';
 
 const tableHeadCells = ['姓', '名', '会社名'];
 
-const Contact = () => {
-  const [contacts, setContacts] = useState<Contact[]>([]);
+// ダミーデータ
+const dummyContacts: Contact[] = [];
+for (let i = 1; i < 100; i++) {
+  dummyContacts.push({
+    id: uuidv4(),
+    lastName: `Dummy-${i}`,
+    firstName: `Testaro-${i}`,
+    companyName: `Company-${i}`,
+  });
+}
 
-  useEffect(() => {
-    getContacts().then((res) => {
-      setContacts(res);
-    });
-  }, []);
+const Contact = () => {
+  // ダミーデータ
+  const [contacts, setContacts] = useState<Contact[]>(dummyContacts);
+
+  // useEffect(() => {
+  //   getContacts().then((res) => {
+  //     setContacts(res);
+  //   });
+  // }, []);
 
   return (
     <Layout>
