@@ -18,7 +18,6 @@ const Contact = () => {
 
   useEffect(() => {
     getContacts().then((res) => {
-      console.log(res);
       setContacts(res);
     });
   }, []);
@@ -29,8 +28,8 @@ const Contact = () => {
         <Table>
           <TableHead>
             <TableRow>
-              {tableHeadCells.map((tableHeadCell) => (
-                <TableCell>{tableHeadCell}</TableCell>
+              {tableHeadCells.map((tableHeadCell, key) => (
+                <TableCell key={key}>{tableHeadCell}</TableCell>
               ))}
             </TableRow>
           </TableHead>
